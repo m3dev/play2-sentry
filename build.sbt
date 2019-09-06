@@ -18,3 +18,18 @@ publishTo := version { v: String =>
   }
 }.value
 resolvers += Resolver.typesafeRepo("releases")
+
+pomExtra :=
+  <url>https://github.com/m3dev/play2-sentry</url>
+  <licenses>
+    <license>
+      <name>The MIT License</name>
+      <url>https://opensource.org/licenses/mit-license.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>git@github.com:m3dev/play2-sentry.git</url>
+    <connection>scm:git:git@github.com:m3dev/play2-sentry.git</connection>
+  </scm>
+
