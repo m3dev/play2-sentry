@@ -22,7 +22,7 @@ Play2では、Java Servletとは違う独自の構造でHTTPリクエスト情�
 
 ```
 libraryDependencies ++= Seq(
-    "com.m3.play2" % "play2-sentry" % "X.Y.Z"
+    "com.m3.play2" % "play2-sentry" % "1.0.0-SNAPSHOT"
 )
 ```
 
