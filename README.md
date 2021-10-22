@@ -20,16 +20,16 @@ Play2では、Java Servletとは違う独自の構造でHTTPリクエスト情�
 
 1. Playアプリの依存に追加する
 
-```
+```scala
 libraryDependencies ++= Seq(
-    "com.m3.play2" % "play2-sentry" % "1.0.0-SNAPSHOT"
+  "com.m3.play2" % "play2-sentry" % "1.0.0"
 )
 ```
 
 2. sentry設定でfactoryを指定する
 
 **sentry.properties**
-```
+```properties
 factory=com.m3.play2.sentry.PlaySentryFactory
 ```
 
@@ -37,7 +37,7 @@ factory=com.m3.play2.sentry.PlaySentryFactory
 
 **application.conf**
 
-```
+```hocon
 play {
   akka {
     actor {
@@ -52,7 +52,7 @@ play {
 
 4. HTTPフィルタにSentryLoggingFilterを追加
 
-```
+```scala
 import com.m3.play2.sentry.SentryLoggingFilter
 
 class ApplicationComponents(context: Context) extends BuiltInComponentsFromContext(context) {
@@ -65,7 +65,7 @@ class ApplicationComponents(context: Context) extends BuiltInComponentsFromConte
 
 5. Sentryの標準的な導入設定を行う
 
-参考: https://docs.sentry.io/clients/java/
+参考: https://docs.sentry.io/platforms/java/legacy/
 
    * ログ出力設定でSentryAppenderを指定する
    * アプリケーション固有のパッケージ名を明記
@@ -77,23 +77,23 @@ class ApplicationComponents(context: Context) extends BuiltInComponentsFromConte
 
 ### ビルド
 
-```
-$ sbt package
+```shell
+sbt package
 ```
 
 ### ローカル環境での動作確認
 
 1. モジュールをivyのローカルキャッシュにインストールする
 
-```
-$ sbt publishLocal
+```shell
+sbt publishLocal
 ```
 
 2. 動作確認用Playアプリで、resolvers にローカルキャッシュディレクトリを追加する
 
 **build.sbt**
 
-```
+```scala
 resolvers += "MyLocalIvy" at "file://"+Path.userHome.absolutePath+"/.ivy2/local"
 ```
 
@@ -102,12 +102,6 @@ resolvers += "MyLocalIvy" at "file://"+Path.userHome.absolutePath+"/.ivy2/local"
 4. アプリを実行する
 
 
-### artifactory にデプロイ
+### デプロイ
 
-以下のコマンドでartifactoryにjarを登録します
-
-```
-$ export REPOSITORY_URL={{デプロイ先のartifactoryのURL}}
-$ sbt clean package publish
-```
-
+`v` から始まる名前のタグをプッシュすると、GitHub Action により Central Repository に登録されます。

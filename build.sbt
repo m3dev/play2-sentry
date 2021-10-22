@@ -1,29 +1,24 @@
-
-scalaVersion := "2.13.2"
-
-javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
-
-crossPaths := false
-
-organization := "com.m3.play2"
-
-name := "play2-sentry"
-
-version := "3.0.1-SNAPSHOT"
-
-libraryDependencies ++= Seq(
-  "io.sentry" % "sentry-logback" % "1.7.5",
-  "com.typesafe.play" % "play_2.13" % "2.8.2" % "provided"
-)
-
-publishTo := version { v: String =>
-  sys.env.get("REPOSITORY_URL").map { base =>
-    if (v.trim.endsWith("SNAPSHOT"))
-      "snapshots" at base + "libs-snapshots"
-    else
-      "releases" at base + "libs-releases"
-  }
-}.value
-
-resolvers += Resolver.typesafeRepo("releases")
-
+lazy val root = (project in file("."))
+  .settings(
+    organization := "com.m3.play2",
+    name := "play2-sentry",
+    scalaVersion := "2.13.10",
+      libraryDependencies ++= Seq(
+      "io.sentry" % "sentry-logback" % "1.7.30",
+      "com.typesafe.play" %% "play" % "2.8.19" % Provided
+    )
+  )
+  .settings(
+    homepage := Some(url("https://github.com/m3dev/play2-sentry")),
+    licenses := Seq(
+      "The MIT License" -> url("https://opensource.org/licenses/mit-license.php")
+    ),
+    developers := List(
+      Developer(
+        "kijuky",
+        "Kizuki YASUE",
+        "kizuki-yasue@m3.com",
+        url("https://github.com/kijuky")
+      )
+    )
+  )
