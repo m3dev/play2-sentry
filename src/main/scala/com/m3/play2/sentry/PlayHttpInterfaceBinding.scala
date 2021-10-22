@@ -4,6 +4,7 @@ import java.io.IOException
 
 import com.fasterxml.jackson.core.JsonGenerator
 import io.sentry.marshaller.json.InterfaceBinding
+import scala.collection.Seq
 
 object PlayHttpInterfaceBinding {
   private val URL = "url"
