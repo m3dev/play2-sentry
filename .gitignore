@@ -1,6 +1,45 @@
-# .gitignore
+# Created by https://www.toptal.com/developers/gitignore/api/scala,sbt,playframework
+# Edit at https://www.toptal.com/developers/gitignore?templates=scala,sbt,playframework
 
-/.idea/
-/.env
+### PlayFramework ###
+# Ignore Play! working directory #
+bin/
+/db
+.eclipse
+/lib/
+/logs/
+/modules
+/project/project
+/project/target
+/target
+tmp/
+test-result
+server.pid
+*.eml
+/dist/
+.cache
+
+### SBT ###
+# Simple Build Tool
+# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
+
+dist/*
 target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.lib/
 
+### SBT Patch ###
+.bsp/
+
+### Scala ###
+*.class
+*.log
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# End of https://www.toptal.com/developers/gitignore/api/scala,sbt,playframework
